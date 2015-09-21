@@ -23,7 +23,7 @@ angular.module('user.controllers', [])
                         if (_response.status) {
                             alert(_response.attributes.username);
                         } else {
-                            alert("logout success " + _response);
+                            //alert("logout success " + _response);
 
                             // transition to next state
                             $state.go('app-login');
@@ -48,7 +48,7 @@ angular.module('user.controllers', [])
                 UserService.login($scope.creds.username, $scope.creds.password)
                     .then(function (_response) {   
                         $ionicLoading.hide();                     
-                        alert("login success " + _response.attributes.username);
+                        //alert("login success " + _response.attributes.username);
 
                         // transition to next state
                         $ionicHistory.clearCache();
@@ -59,6 +59,7 @@ angular.module('user.controllers', [])
                         alert("error logging in " + _error.message);
                     })
             };
+            $scope.doLoginAction();
         }])
     .controller('SignUpController', [
         '$state', '$scope', 'UserService',   // <-- controller dependencies

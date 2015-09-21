@@ -39,9 +39,28 @@ angular.module('starter.controllers', [])
 	  	}
 	}
 }])
-.controller('JournalCtrl',function($scope,journal){
+.controller('JournalCtrl',function($scope,journal,journalServices,$state){
 	$scope.journal = journal;
 	console.log(journal);
+    $scope.clear = function(){
+        $scope.journal.attributes.content = '';
+    };
+    $scope.save = function(){
+        var journal = {content: $scope.journal.attributes.content,id: $scope.journal.id};
+        if(journal.content == ''|| journal.content==undefined) {
+            console.log('del');
+            journalServices.delete(journal.id).then(function(res){
+                console.log(res);
+                $state.go('tab.list');
+            });
+        }
+        else{
+            console.log('save');
+            journalServices.save(journal).then(function(res){
+                console.log(res);
+            });
+        }
+    }
 	//{{journal.attributes.content}}{{journal.createdAt}}
 })
 .directive('textarea', function() {

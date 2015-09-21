@@ -31,7 +31,7 @@ angular.module('user.services', [])
 
                             $ionicUser.identify({
                                 user_id: currentUser.id,
-                                name: currentUser.get("email"),
+                                name: currentUser.get("email")
                             });
 
                             deferred.resolve(currentUser);
