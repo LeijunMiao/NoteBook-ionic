@@ -1,0 +1,19 @@
+<ion-view title="List"> 
+<ion-header-bar align-title="left" class="bar-dark">
+
+		<button class="button" ng-click="login();" ng-if="!isLogin">Login</button>
+		<button class="button" ng-click="logout();" ng-if="isLogin">Logout</button>
+</ion-header-bar>
+<ion-content >
+	<form ng-submit="createJournal(journal)">
+      <label class="item item-input">
+        <input type="text" name=""  placeholder="......" ng-model="journal.content">
+      </label>
+    </form>
+	<ion-list>
+		<ion-item ng-repeat="journal in journals" ui-sref="tab.journal({jid: journal.id})">
+		{{journal.content}}
+		</ion-item>
+	</ion-list>
+</ion-content>
+</ion-view>
