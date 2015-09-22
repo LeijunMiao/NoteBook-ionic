@@ -81,18 +81,33 @@ angular.module('starter.controllers', [])
       restrict: 'E',
       link: function(scope, element, attr) {
         var update = function() {
-          element.css("height", "auto");
-          var height = element[0].scrollHeight;
-          element.css("height", height + "px");
-          console.log('height',height);
-        };
-        element.bind('keyup keydown keypress change load focus', update);
+            //var temHeight = angular.copy(element[0].scrollHeight);
+            $timeout(function() {
+                element.css("height", "auto");
+                //console.log(element[0].scrollHeight);
+                //console.log(element[0].parentNode.parentNode.offsetHeight);
+                var height = element[0].scrollHeight > element[0].parentNode.parentNode.offsetHeight
+                    ?element[0].scrollHeight
+                    :element[0].parentNode.parentNode.offsetHeight;//parentNode
 
+                element.css("height", height + "px");
+                //console.log('1',temHeight);
+                //console.log('2',height);
+                //if(temHeight != height ) {&& !isfirst
+                            //element[0].parentNode.scrollTop = height;//parentNode
+                            //console.log('3',height);
+                  //  }
+            },100);
+        };
+        element.bind('keyup keydown keypress change', update());//
+        update();
+        /*
         scope.$watch(attr.ngModel, function() {
             $timeout(function() {
                 element[0].focus();
             },500);
         });
+        */
 
       }
     };
