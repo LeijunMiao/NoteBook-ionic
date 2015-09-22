@@ -11,7 +11,7 @@
       </label>
     </form>
 	<ion-list>
-		<ion-item ng-repeat="journal in journals" ui-sref="tab.journal({jid: journal.id})">
+		<ion-item ng-repeat="journal in journals" ui-sref="tab.journal({jid: journal.id})" ><!--href href="#/tab/journal/dglmvUsXUj"-->
 		{{journal.content}}
 		</ion-item>
 	</ion-list>

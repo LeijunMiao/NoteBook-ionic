@@ -58,6 +58,9 @@ angular.module('starter', ['ionic','ionic.service.core','user.services',
               templateUrl: 'templates/tab-list.html',
               controller: 'ListCtrl'
           }
+      },
+      data: {
+          requiresLogin: true
       }
   })
   .state('tab.journal', {
