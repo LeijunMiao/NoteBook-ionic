@@ -51,15 +51,17 @@ angular.module('user.controllers', [])
                         //alert("login success " + _response.attributes.username);
 
                         // transition to next state
-                        $ionicHistory.clearCache();
-                        $state.go('tab.list');
+                        $ionicHistory.clearCache().then(function () {
+                            $state.go('tab.list');
+                        });
+
 
                     }, function (_error) {
                         $ionicLoading.hide();
                         alert("error logging in " + _error.message);
                     })
             };
-            $scope.doLoginAction();
+            //$scope.doLoginAction();
         }])
     .controller('SignUpController', [
         '$state', '$scope', 'UserService',   // <-- controller dependencies
